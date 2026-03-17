@@ -75,8 +75,14 @@ const faqs = [
 const Index = () => {
   const [selected, setSelected] = useState(0);
   const [selectedModel, setSelectedModel] = useState(0);
+  const [selectedPhoto, setSelectedPhoto] = useState(0);
 
   const currentModel = models[selectedModel];
+
+  const handleModelChange = (i: number) => {
+    setSelectedModel(i);
+    setSelectedPhoto(0);
+  };
 
   return (
     <div className="min-h-screen bg-background">
