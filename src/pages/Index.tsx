@@ -6,6 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import ProductDetails from "@/components/ProductDetails";
 import MysteriesSection from "@/components/MysteriesSection";
 import CustomerPhotosCarousel from "@/components/CustomerPhotosCarousel";
+import SocialProofReviews from "@/components/SocialProofReviews";
 
 const models = [
   {
