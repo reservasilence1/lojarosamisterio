@@ -8,8 +8,28 @@ import MysteriesSection from "@/components/MysteriesSection";
 import CustomerPhotosCarousel from "@/components/CustomerPhotosCarousel";
 
 const models = [
-  { id: "sao-bento", label: "São Bento", image: "/images/terco-sao-bento.jpg" },
-  { id: "aparecida", label: "Nossa Senhora Aparecida", image: "/images/terco-aparecida.jpg" },
+  {
+    id: "sao-bento",
+    label: "São Bento",
+    images: [
+      "/images/terco-sao-bento.jpg",
+      "/images/sao-bento-2.jpg",
+      "/images/sao-bento-3.jpg",
+      "/images/sao-bento-4.jpg",
+      "/images/sao-bento-5.jpg",
+    ],
+  },
+  {
+    id: "aparecida",
+    label: "Nossa Senhora Aparecida",
+    images: [
+      "/images/terco-aparecida.jpg",
+      "/images/aparecida-2.jpg",
+      "/images/aparecida-3.jpg",
+      "/images/aparecida-4.jpg",
+      "/images/aparecida-5.jpg",
+    ],
+  },
 ];
 
 const prices = [
