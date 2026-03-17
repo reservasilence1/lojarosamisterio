@@ -141,7 +141,7 @@ const Index = () => {
                 {models.map((model, i) => (
                   <button
                     key={model.id}
-                    onClick={() => setSelectedModel(i)}
+                    onClick={() => handleModelChange(i)}
                     className={`flex items-center gap-2 px-4 py-2 rounded-lg border-2 transition-all text-sm ${
                       selectedModel === i
                         ? "border-primary bg-primary/5 text-foreground font-bold"
@@ -149,7 +149,7 @@ const Index = () => {
                     }`}
                   >
                     <div className="w-8 h-8 rounded-full overflow-hidden border border-border shrink-0">
-                      <img src={model.image} alt={model.label} className="w-full h-full object-cover" />
+                      <img src={model.images[0]} alt={model.label} className="w-full h-full object-cover" />
                     </div>
                     {model.label}
                   </button>
