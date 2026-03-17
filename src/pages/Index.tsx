@@ -33,9 +33,9 @@ const models = [
 ];
 
 const prices = [
-  { qty: 1, label: "1 Unidade", price: 19, perUnit: null },
-  { qty: 2, label: "2 Unidades", price: 29, perUnit: 15 },
-  { qty: 3, label: "3 Unidades", price: 39, perUnit: 13 },
+  { qty: 1, label: "1 Unidade", price: 19, perUnit: null, checkoutUrl: "https://seu-link-checkout-19.com" },
+  { qty: 2, label: "2 Unidades", price: 29, perUnit: 15, checkoutUrl: "https://seu-link-checkout-29.com" },
+  { qty: 3, label: "3 Unidades", price: 39, perUnit: 13, checkoutUrl: "https://seu-link-checkout-39.com" },
 ];
 
 const features = [
