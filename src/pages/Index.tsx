@@ -1,9 +1,13 @@
 import { useState } from "react";
-import { Star, ShieldCheck, Truck, Lock, ChevronDown, ShoppingCart, Crown, Shield, Gem } from "lucide-react";
+import { Star, ShieldCheck, Truck, Lock, ShoppingCart, Crown, Shield, Gem } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import tercoHero from "@/assets/terco-hero.jpg";
+
+const models = [
+  { id: "sao-bento", label: "São Bento", image: "/images/terco-sao-bento.jpg" },
+  { id: "aparecida", label: "Nossa Senhora Aparecida", image: "/images/terco-aparecida.jpg" },
+];
 
 const prices = [
   { qty: 1, label: "1 Unidade", price: 19, perUnit: null },
@@ -47,11 +51,14 @@ const faqs = [
 
 const Index = () => {
   const [selected, setSelected] = useState(0);
+  const [selectedModel, setSelectedModel] = useState(0);
+
+  const currentModel = models[selectedModel];
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="w-full py-3 bg-primary text-primary-foreground text-center">
+      {/* Header - Sticky */}
+      <header className="w-full py-3 bg-primary text-primary-foreground text-center sticky top-0 z-50 shadow-md">
         <img src="/images/logo-header.png" alt="Loja Rosa Mistério" className="h-10 mx-auto" />
       </header>
 
@@ -61,12 +68,12 @@ const Index = () => {
           {/* Product Image */}
           <div>
             <div className="rounded-lg overflow-hidden border border-border">
-              <img src={tercoHero} alt="Terço Católico de Contemplação dos Mistérios" className="w-full h-auto object-cover" />
+              <img src={currentModel.image} alt="Terço Católico de Contemplação dos Mistérios" className="w-full h-auto object-cover" />
             </div>
             <div className="flex gap-2 mt-3">
               {[1, 2, 3, 4, 5].map((i) => (
                 <div key={i} className="w-16 h-16 rounded border border-border overflow-hidden bg-muted">
-                  <img src={tercoHero} alt={`Detalhe ${i}`} className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity cursor-pointer" />
+                  <img src={currentModel.image} alt={`Detalhe ${i}`} className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity cursor-pointer" />
                 </div>
               ))}
             </div>
@@ -75,12 +82,12 @@ const Index = () => {
           {/* Product Info */}
           <div className="space-y-4">
             <span className="inline-block bg-primary/15 text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-              ✦ Edição São Bento
+              ✦ Edição {currentModel.label}
             </span>
             <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
               Terço Católico de Contemplação dos Mistérios
             </h1>
-            <p className="text-sm text-muted-foreground">Madeira Nobre & Bronze — Medalha de São Bento e Crucifixo</p>
+            <p className="text-sm text-muted-foreground">Madeira Nobre & Bronze — Medalha de {currentModel.label} e Crucifixo</p>
             <div className="flex items-center gap-2">
               <div className="flex text-primary">
                 {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
@@ -136,7 +143,7 @@ const Index = () => {
 
       {/* Features */}
       <section className="max-w-5xl mx-auto px-4 py-12">
-        <h2 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-8">Por que escolher a versão São Bento?</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-8">Por que escolher a versão {currentModel.label}?</h2>
         <div className="grid md:grid-cols-3 gap-6">
           {features.map((f, i) => (
             <Card key={i} className="text-center border-border">
@@ -152,8 +159,30 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Model Selector + Testimonials */}
       <section className="max-w-5xl mx-auto px-4 py-12">
+        {/* Model Selector */}
+        <div className="mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-6">Escolha o Modelo</h2>
+          <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto">
+            {models.map((model, i) => (
+              <button
+                key={model.id}
+                onClick={() => setSelectedModel(i)}
+                className={`flex flex-col items-center gap-3 p-4 rounded-lg border-2 transition-all ${
+                  selectedModel === i ? "border-primary bg-primary/5 shadow-md" : "border-border hover:border-primary/40"
+                }`}
+              >
+                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-border">
+                  <img src={model.image} alt={model.label} className="w-full h-full object-cover" />
+                </div>
+                <span className="text-sm font-bold text-foreground">{model.label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Testimonials */}
         <h2 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-8">O Que Nossos Clientes Dizem</h2>
         <div className="grid md:grid-cols-2 gap-6">
           {testimonials.map((t, i) => (
