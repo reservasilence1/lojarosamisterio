@@ -110,7 +110,7 @@ const Index = () => {
                 >
                   <img src={img} alt={`Detalhe ${i + 1}`} className="w-full h-full object-cover" />
                 </div>
-            </div>
+              ))}
             </div>
           </div>
 
