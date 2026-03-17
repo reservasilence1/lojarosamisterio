@@ -193,6 +193,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Social Proof Reviews */}
+      <SocialProofReviews />
+
       {/* Product Details Section */}
       <ProductDetails />
 
