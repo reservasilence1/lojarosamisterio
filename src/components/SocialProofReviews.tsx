@@ -103,6 +103,7 @@ const StarRating = ({
 const SocialProofReviews = () => {
   const [userRatings, setUserRatings] = useState<Record<number, number>>({});
   const [helpfulCounts, setHelpfulCounts] = useState<Record<number, number>>({});
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
   const handleRate = (reviewId: number, stars: number) => {
     setUserRatings((prev) => ({ ...prev, [reviewId]: stars }));
