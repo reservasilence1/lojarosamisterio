@@ -52,7 +52,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="w-full py-3 bg-primary text-primary-foreground text-center">
-        <span className="text-sm font-bold tracking-wider">✦ Loja Rosa Mistério</span>
+        <img src="/images/logo-header.png" alt="Loja Rosa Mistério" className="h-10 mx-auto" />
       </header>
 
       {/* Hero Section */}
