@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Star, ThumbsUp, Play } from "lucide-react";
+import { Star, ThumbsUp, Play, X } from "lucide-react";
 
 interface Review {
   id: number;
@@ -22,7 +22,7 @@ const reviewsData: Review[] = [
     media: [
       { type: "image", src: "/images/cliente-1.jpg" },
       { type: "image", src: "/images/cliente-2.jpg" },
-      { type: "video", src: "", thumbnail: "/images/cliente-3.jpg" },
+      { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4", thumbnail: "/images/cliente-3.jpg" },
     ],
     helpful: 12,
     date: "15/03/2026",
@@ -34,7 +34,7 @@ const reviewsData: Review[] = [
     variation: "Nossa Senhora Aparecida",
     text: "Superou todas as expectativas! O acabamento é impecável, parece peça de antiquário. As contas de madeira são firmes e o cordão muito resistente. Recomendo demais!",
     media: [
-      { type: "video", src: "", thumbnail: "/images/cliente-4.jpg" },
+      { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4", thumbnail: "/images/cliente-4.jpg" },
       { type: "image", src: "/images/cliente-5.jpg" },
     ],
     helpful: 8,
@@ -103,6 +103,7 @@ const StarRating = ({
 const SocialProofReviews = () => {
   const [userRatings, setUserRatings] = useState<Record<number, number>>({});
   const [helpfulCounts, setHelpfulCounts] = useState<Record<number, number>>({});
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
   const handleRate = (reviewId: number, stars: number) => {
     setUserRatings((prev) => ({ ...prev, [reviewId]: stars }));
@@ -120,6 +121,18 @@ const SocialProofReviews = () => {
 
   return (
     <section className="max-w-3xl mx-auto px-4 py-12">
+      {/* Video Modal */}
+      {activeVideo && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/70" onClick={() => setActiveVideo(null)}>
+          <div className="relative w-full max-w-lg mx-4" onClick={(e) => e.stopPropagation()}>
+            <button onClick={() => setActiveVideo(null)} className="absolute -top-10 right-0 text-primary-foreground hover:text-primary transition-colors">
+              <X className="w-6 h-6" />
+            </button>
+            <video src={activeVideo} controls autoPlay className="w-full rounded-lg" />
+          </div>
+        </div>
+      )}
+
       {/* Header */}
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
@@ -145,43 +158,30 @@ const SocialProofReviews = () => {
       {/* Reviews */}
       <div className="space-y-6">
         {reviewsData.map((review) => (
-          <div
-            key={review.id}
-            className="border-b border-border pb-6 last:border-b-0"
-          >
+          <div key={review.id} className="border-b border-border pb-6 last:border-b-0">
             {/* User info */}
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs font-bold uppercase">
                   {review.username[0]}
                 </div>
-                <span className="font-semibold text-sm text-foreground">
-                  {review.username}
-                </span>
+                <span className="font-semibold text-sm text-foreground">{review.username}</span>
               </div>
               <button
                 onClick={() => handleHelpful(review.id, review.helpful)}
                 className="flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors"
               >
-                Útil (
-                {helpfulCounts[review.id] !== undefined
-                  ? helpfulCounts[review.id]
-                  : review.helpful}
-                ) <ThumbsUp className="w-3 h-3" />
+                Útil ({helpfulCounts[review.id] !== undefined ? helpfulCounts[review.id] : review.helpful}) <ThumbsUp className="w-3 h-3" />
               </button>
             </div>
 
-            {/* Stars */}
             <StarRating rating={review.stars} />
 
-            {/* Variation + text */}
             <p className="text-xs text-muted-foreground mt-2">
               Variação: <span className="font-medium text-foreground">{review.variation}</span>
               <span className="ml-3">{review.date}</span>
             </p>
-            <p className="text-sm text-foreground mt-2 leading-relaxed">
-              {review.text}
-            </p>
+            <p className="text-sm text-foreground mt-2 leading-relaxed">{review.text}</p>
 
             {/* Media */}
             {review.media.length > 0 && (
@@ -189,7 +189,8 @@ const SocialProofReviews = () => {
                 {review.media.map((m, i) => (
                   <div
                     key={i}
-                    className="relative w-24 h-24 rounded-md overflow-hidden border border-border bg-muted"
+                    className="relative w-24 h-24 rounded-md overflow-hidden border border-border bg-muted cursor-pointer"
+                    onClick={() => m.type === "video" && m.src && setActiveVideo(m.src)}
                   >
                     <img
                       src={m.type === "video" ? m.thumbnail : m.src}
@@ -199,9 +200,7 @@ const SocialProofReviews = () => {
                     {m.type === "video" && (
                       <div className="absolute inset-0 flex items-center justify-center bg-foreground/30">
                         <Play className="w-6 h-6 text-primary-foreground fill-primary-foreground" />
-                        <span className="absolute bottom-1 left-1 text-[10px] text-primary-foreground font-medium">
-                          0:15
-                        </span>
+                        <span className="absolute bottom-1 left-1 text-[10px] text-primary-foreground font-medium">0:15</span>
                       </div>
                     )}
                   </div>
@@ -212,11 +211,7 @@ const SocialProofReviews = () => {
             {/* User interactive rating */}
             <div className="mt-3 flex items-center gap-2">
               <span className="text-xs text-muted-foreground">Sua avaliação:</span>
-              <StarRating
-                rating={userRatings[review.id] || 0}
-                interactive
-                onRate={(n) => handleRate(review.id, n)}
-              />
+              <StarRating rating={userRatings[review.id] || 0} interactive onRate={(n) => handleRate(review.id, n)} />
             </div>
           </div>
         ))}
