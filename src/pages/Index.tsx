@@ -3,6 +3,9 @@ import { Star, ShieldCheck, Truck, Lock, ShoppingCart, Crown, Shield, Gem } from
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import ProductDetails from "@/components/ProductDetails";
+import MysteriesSection from "@/components/MysteriesSection";
+import CustomerPhotosCarousel from "@/components/CustomerPhotosCarousel";
 
 const models = [
   { id: "sao-bento", label: "São Bento", image: "/images/terco-sao-bento.jpg" },
@@ -98,6 +101,29 @@ const Index = () => {
               O mapa para sua oração e a armadura para sua alma. Unindo a força rústica da madeira com a nobreza eterna do bronze, este terço é uma ferramenta pedagógica de fé com placas indicativas dos Mistérios para meditação profunda.
             </p>
 
+            {/* Model Selector - Shopee style */}
+            <div className="space-y-2">
+              <p className="text-sm font-bold text-foreground">Modelo:</p>
+              <div className="flex gap-3">
+                {models.map((model, i) => (
+                  <button
+                    key={model.id}
+                    onClick={() => setSelectedModel(i)}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg border-2 transition-all text-sm ${
+                      selectedModel === i
+                        ? "border-primary bg-primary/5 text-foreground font-bold"
+                        : "border-border hover:border-primary/40 text-muted-foreground"
+                    }`}
+                  >
+                    <div className="w-8 h-8 rounded-full overflow-hidden border border-border shrink-0">
+                      <img src={model.image} alt={model.label} className="w-full h-full object-cover" />
+                    </div>
+                    {model.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             {/* Pricing */}
             <div className="space-y-2">
               <p className="text-sm font-bold text-foreground">Escolha sua oferta:</p>
@@ -131,6 +157,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Product Details Section */}
+      <ProductDetails />
+
       {/* Diferencial */}
       <section className="max-w-3xl mx-auto px-4 py-12 text-center">
         <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">O Grande Diferencial: O Caminho da Contemplação</h2>
@@ -159,30 +188,14 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Model Selector + Testimonials */}
-      <section className="max-w-5xl mx-auto px-4 py-12">
-        {/* Model Selector */}
-        <div className="mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-6">Escolha o Modelo</h2>
-          <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto">
-            {models.map((model, i) => (
-              <button
-                key={model.id}
-                onClick={() => setSelectedModel(i)}
-                className={`flex flex-col items-center gap-3 p-4 rounded-lg border-2 transition-all ${
-                  selectedModel === i ? "border-primary bg-primary/5 shadow-md" : "border-border hover:border-primary/40"
-                }`}
-              >
-                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-border">
-                  <img src={model.image} alt={model.label} className="w-full h-full object-cover" />
-                </div>
-                <span className="text-sm font-bold text-foreground">{model.label}</span>
-              </button>
-            ))}
-          </div>
-        </div>
+      {/* Mysteries of the Rosary */}
+      <MysteriesSection />
 
-        {/* Testimonials */}
+      {/* Customer Photos Carousel */}
+      <CustomerPhotosCarousel />
+
+      {/* Testimonials */}
+      <section className="max-w-5xl mx-auto px-4 py-12">
         <h2 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-8">O Que Nossos Clientes Dizem</h2>
         <div className="grid md:grid-cols-2 gap-6">
           {testimonials.map((t, i) => (
