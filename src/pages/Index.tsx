@@ -8,8 +8,28 @@ import MysteriesSection from "@/components/MysteriesSection";
 import CustomerPhotosCarousel from "@/components/CustomerPhotosCarousel";
 
 const models = [
-  { id: "sao-bento", label: "São Bento", image: "/images/terco-sao-bento.jpg" },
-  { id: "aparecida", label: "Nossa Senhora Aparecida", image: "/images/terco-aparecida.jpg" },
+  {
+    id: "sao-bento",
+    label: "São Bento",
+    images: [
+      "/images/terco-sao-bento.jpg",
+      "/images/sao-bento-2.jpg",
+      "/images/sao-bento-3.jpg",
+      "/images/sao-bento-4.jpg",
+      "/images/sao-bento-5.jpg",
+    ],
+  },
+  {
+    id: "aparecida",
+    label: "Nossa Senhora Aparecida",
+    images: [
+      "/images/terco-aparecida.jpg",
+      "/images/aparecida-2.jpg",
+      "/images/aparecida-3.jpg",
+      "/images/aparecida-4.jpg",
+      "/images/aparecida-5.jpg",
+    ],
+  },
 ];
 
 const prices = [
@@ -55,8 +75,14 @@ const faqs = [
 const Index = () => {
   const [selected, setSelected] = useState(0);
   const [selectedModel, setSelectedModel] = useState(0);
+  const [selectedPhoto, setSelectedPhoto] = useState(0);
 
   const currentModel = models[selectedModel];
+
+  const handleModelChange = (i: number) => {
+    setSelectedModel(i);
+    setSelectedPhoto(0);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -71,12 +97,18 @@ const Index = () => {
           {/* Product Image */}
           <div>
             <div className="rounded-lg overflow-hidden border border-border">
-              <img src={currentModel.image} alt="Terço Católico de Contemplação dos Mistérios" className="w-full h-auto object-cover" />
+              <img src={currentModel.images[selectedPhoto]} alt="Terço Católico de Contemplação dos Mistérios" className="w-full h-auto object-cover" />
             </div>
             <div className="flex gap-2 mt-3">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <div key={i} className="w-16 h-16 rounded border border-border overflow-hidden bg-muted">
-                  <img src={currentModel.image} alt={`Detalhe ${i}`} className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity cursor-pointer" />
+              {currentModel.images.map((img, i) => (
+                <div
+                  key={i}
+                  onClick={() => setSelectedPhoto(i)}
+                  className={`w-16 h-16 rounded border overflow-hidden bg-muted cursor-pointer transition-all ${
+                    selectedPhoto === i ? "border-primary ring-2 ring-primary/30" : "border-border"
+                  }`}
+                >
+                  <img src={img} alt={`Detalhe ${i + 1}`} className="w-full h-full object-cover" />
                 </div>
               ))}
             </div>
@@ -108,7 +140,7 @@ const Index = () => {
                 {models.map((model, i) => (
                   <button
                     key={model.id}
-                    onClick={() => setSelectedModel(i)}
+                    onClick={() => handleModelChange(i)}
                     className={`flex items-center gap-2 px-4 py-2 rounded-lg border-2 transition-all text-sm ${
                       selectedModel === i
                         ? "border-primary bg-primary/5 text-foreground font-bold"
@@ -116,7 +148,7 @@ const Index = () => {
                     }`}
                   >
                     <div className="w-8 h-8 rounded-full overflow-hidden border border-border shrink-0">
-                      <img src={model.image} alt={model.label} className="w-full h-full object-cover" />
+                      <img src={model.images[0]} alt={model.label} className="w-full h-full object-cover" />
                     </div>
                     {model.label}
                   </button>
