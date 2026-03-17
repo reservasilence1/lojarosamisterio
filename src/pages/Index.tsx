@@ -97,13 +97,20 @@ const Index = () => {
           {/* Product Image */}
           <div>
             <div className="rounded-lg overflow-hidden border border-border">
-              <img src={currentModel.image} alt="Terço Católico de Contemplação dos Mistérios" className="w-full h-auto object-cover" />
+              <img src={currentModel.images[selectedPhoto]} alt="Terço Católico de Contemplação dos Mistérios" className="w-full h-auto object-cover" />
             </div>
             <div className="flex gap-2 mt-3">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <div key={i} className="w-16 h-16 rounded border border-border overflow-hidden bg-muted">
-                  <img src={currentModel.image} alt={`Detalhe ${i}`} className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity cursor-pointer" />
+              {currentModel.images.map((img, i) => (
+                <div
+                  key={i}
+                  onClick={() => setSelectedPhoto(i)}
+                  className={`w-16 h-16 rounded border overflow-hidden bg-muted cursor-pointer transition-all ${
+                    selectedPhoto === i ? "border-primary ring-2 ring-primary/30" : "border-border"
+                  }`}
+                >
+                  <img src={img} alt={`Detalhe ${i + 1}`} className="w-full h-full object-cover" />
                 </div>
+              ))}
               ))}
             </div>
           </div>
