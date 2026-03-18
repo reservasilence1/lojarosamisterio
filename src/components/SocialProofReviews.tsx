@@ -34,7 +34,7 @@ const reviewsData: Review[] = [
     variation: "Nossa Senhora Aparecida",
     text: "Superou todas as expectativas! O acabamento é impecável, parece peça de antiquário. As contas de madeira são firmes e o cordão muito resistente. Recomendo demais!",
     media: [
-      { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4", thumbnail: "/images/cliente-4.jpg" },
+      { type: "video", src: "/images/provans4.mp4", thumbnail: "/images/cliente-4.jpg" },
       { type: "image", src: "/images/cliente-5.jpg" },
     ],
     helpful: 8,
