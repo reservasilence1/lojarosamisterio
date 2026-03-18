@@ -88,10 +88,12 @@ const Index = () => {
   const cartRef = useRef<HTMLDivElement>(null);
 
   const currentModel = models[selectedModel];
+  const prices = pricesByModel[currentModel.id];
 
   const handleModelChange = (i: number) => {
     setSelectedModel(i);
     setSelectedPhoto(0);
+    setSelected(0);
   };
 
   useEffect(() => {
