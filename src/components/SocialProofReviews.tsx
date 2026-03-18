@@ -56,7 +56,7 @@ const reviewsData: Review[] = [
     id: 4,
     username: "pe_roberto_lima",
     stars: 5,
-    variation: "São Bento",
+    variation: "Nossa Senhora Aparecida",
     text: "Uso no grupo de oração da paróquia. As placas dos mistérios facilitam muito para quem está aprendendo a rezar o terço. Material de alta qualidade.",
     media: [
       { type: "image", src: "/images/cliente-7.jpg" },
