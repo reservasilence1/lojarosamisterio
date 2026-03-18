@@ -178,7 +178,7 @@ const Index = () => {
             </div>
 
             <Button
-              className="w-full h-14 text-lg font-bold gap-2 rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground"
+              className="w-full h-14 text-lg font-bold gap-2 rounded-lg bg-[#348d35] hover:bg-[#2d7a2e] text-white"
               onClick={() => window.open(prices[selected].checkoutUrl, "_blank")}
             >
               <ShoppingCart className="w-5 h-5" />
@@ -300,7 +300,7 @@ const Index = () => {
               ))}
             </div>
             <Button
-              className="w-full max-w-md h-14 text-lg font-bold gap-2 rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground"
+              className="w-full max-w-md h-14 text-lg font-bold gap-2 rounded-lg bg-[#348d35] hover:bg-[#2d7a2e] text-white"
               onClick={() => window.open(prices[selected].checkoutUrl, "_blank")}
             >
               <ShoppingCart className="w-5 h-5" />
