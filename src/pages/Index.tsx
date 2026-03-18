@@ -100,7 +100,7 @@ const Index = () => {
       {/* Header - Sticky */}
       <header className="w-full py-3 bg-card text-foreground sticky top-0 z-50 shadow-md border-b border-border">
         <div className="max-w-5xl mx-auto px-4 flex items-center justify-center">
-          <img src="/images/logo-header.png" alt="Loja Rosa Mistério" className="h-10" />
+          <span className="text-lg md:text-xl font-bold text-primary">🐣 Promoção de Páscoa 70% OFF</span>
         </div>
       </header>
 
