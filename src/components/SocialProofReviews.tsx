@@ -22,7 +22,7 @@ const reviewsData: Review[] = [
     media: [
       { type: "image", src: "/images/cliente-1.jpg" },
       { type: "image", src: "/images/cliente-2.jpg" },
-      { type: "video", src: "https://www.w3schools.com/html/mov_bbb.mp4", thumbnail: "/images/cliente-3.jpg" },
+      { type: "video", src: "/images/provans3.mp4", thumbnail: "/images/cliente-3.jpg" },
     ],
     helpful: 12,
     date: "15/03/2026",
