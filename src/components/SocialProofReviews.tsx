@@ -17,7 +17,7 @@ const reviewsData: Review[] = [
     id: 1,
     username: "mariacristina_santos",
     stars: 5,
-    variation: "São Bento",
+    variation: "Nossa Senhora Aparecida",
     text: "Produto maravilhoso! A qualidade do bronze é impressionante e as placas dos mistérios são perfeitas para meditar. Minha família toda amou, já estou comprando mais para presentear.",
     media: [
       { type: "image", src: "/images/cliente-1.jpg" },
