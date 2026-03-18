@@ -94,15 +94,6 @@ const Index = () => {
     setSelected(0);
   };
 
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (cartRef.current && !cartRef.current.contains(e.target as Node)) {
-        setCartOpen(false);
-      }
-    };
-    if (cartOpen) document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [cartOpen]);
 
   return (
     <div className="min-h-screen bg-background">
