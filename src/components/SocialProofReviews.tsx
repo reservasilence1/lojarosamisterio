@@ -29,7 +29,7 @@ const reviewsData: Review[] = [
   },
   {
     id: 2,
-    username: "joao_pedro_fiel",
+    username: "fernanda_oliveira",
     stars: 5,
     variation: "São Bento",
     text: "Superou todas as expectativas! O acabamento é impecável, parece peça de antiquário. As contas de madeira são firmes e o cordão muito resistente. Recomendo demais!",
