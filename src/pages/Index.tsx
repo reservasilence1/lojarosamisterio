@@ -88,7 +88,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header - Sticky */}
-      <header className="w-full py-3 bg-primary text-primary-foreground text-center sticky top-0 z-50 shadow-md">
+      <header className="w-full py-3 bg-card text-foreground text-center sticky top-0 z-50 shadow-md border-b border-border">
         <img src="/images/logo-header.png" alt="Loja Rosa Mistério" className="h-10 mx-auto" />
       </header>
 
