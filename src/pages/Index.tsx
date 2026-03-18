@@ -33,11 +33,18 @@ const models = [
   },
 ];
 
-const prices = [
-  { qty: 1, label: "1 Unidade", price: 19, perUnit: null, checkoutUrl: "https://pay.rosamisterio.site/checkout/ad448ed6-2adb-407d-aa33-b2612ba6a265" },
-  { qty: 2, label: "2 Unidades", price: 29, perUnit: 15, checkoutUrl: "https://pay.rosamisterio.site/checkout/fc4d0f20-847c-429b-9812-26cbf8368390" },
-  { qty: 3, label: "3 Unidades", price: 39, perUnit: 13, checkoutUrl: "https://pay.rosamisterio.site/checkout/ff7b0935-972c-4678-bc80-b849bcdd094e" },
-];
+const pricesByModel: Record<string, { qty: number; label: string; price: number; perUnit: number | null; checkoutUrl: string }[]> = {
+  "sao-bento": [
+    { qty: 1, label: "1 Unidade", price: 19, perUnit: null, checkoutUrl: "https://pay.rosamisterio.site/checkout/ad448ed6-2adb-407d-aa33-b2612ba6a265" },
+    { qty: 2, label: "2 Unidades", price: 29, perUnit: 15, checkoutUrl: "https://pay.rosamisterio.site/checkout/fc4d0f20-847c-429b-9812-26cbf8368390" },
+    { qty: 3, label: "3 Unidades", price: 39, perUnit: 13, checkoutUrl: "https://pay.rosamisterio.site/checkout/ff7b0935-972c-4678-bc80-b849bcdd094e" },
+  ],
+  "aparecida": [
+    { qty: 1, label: "1 Unidade", price: 19, perUnit: null, checkoutUrl: "https://pay.rosamisterio.site/checkout/f299c504-6092-4196-91cd-381421e16619" },
+    { qty: 2, label: "2 Unidades", price: 29, perUnit: 15, checkoutUrl: "https://pay.rosamisterio.site/checkout/95e182d7-4338-430b-b2f5-482d39d51adc" },
+    { qty: 3, label: "3 Unidades", price: 39, perUnit: 13, checkoutUrl: "https://pay.rosamisterio.site/checkout/d09219cb-533c-4ba4-921f-45cf5592d75f" },
+  ],
+};
 
 const features = [
   {
