@@ -33,7 +33,7 @@ const models = [
   },
 ];
 
-const pricesByModel: Record<string, { qty: number; label: string; price: number; perUnit: number | null; checkoutUrl: string }[]> = {
+const pricesByModel: Record<string, { qty: number; label: string; price: number; oldPrice: number; perUnit: number | null; badge: string | null; checkoutUrl: string }[]> = {
   "sao-bento": [
     { qty: 1, label: "1 Unidade", price: 19, oldPrice: 29, perUnit: null, badge: null, checkoutUrl: "https://pay.rosamisterio.site/checkout/ad448ed6-2adb-407d-aa33-b2612ba6a265" },
     { qty: 2, label: "2 Unidades", price: 29, oldPrice: 69, perUnit: 15, badge: "Mais vendido", checkoutUrl: "https://pay.rosamisterio.site/checkout/fc4d0f20-847c-429b-9812-26cbf8368390" },
