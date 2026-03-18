@@ -13,36 +13,36 @@ const models = [
     id: "sao-bento",
     label: "São Bento",
     images: [
-      "/images/terco-sao-bento.jpg",
-      "/images/sao-bento-2.jpg",
-      "/images/sao-bento-3.jpg",
-      "/images/sao-bento-4.jpg",
-      "/images/sao-bento-5.jpg",
+      "/images/terco-sao-bento.webp",
+      "/images/sao-bento-2.webp",
+      "/images/sao-bento-3.webp",
+      "/images/sao-bento-4.webp",
+      "/images/sao-bento-5.webp",
     ],
   },
   {
     id: "aparecida",
     label: "Nossa Senhora Aparecida",
     images: [
-      "/images/terco-aparecida.jpg",
-      "/images/aparecida-2.jpg",
-      "/images/aparecida-3.jpg",
-      "/images/aparecida-4.jpg",
-      "/images/aparecida-5.jpg",
+      "/images/terco-aparecida.webp",
+      "/images/aparecida-2.webp",
+      "/images/aparecida-3.webp",
+      "/images/aparecida-4.webp",
+      "/images/aparecida-5.webp",
     ],
   },
 ];
 
-const pricesByModel: Record<string, { qty: number; label: string; price: number; perUnit: number | null; checkoutUrl: string }[]> = {
+const pricesByModel: Record<string, { qty: number; label: string; price: number; oldPrice: number; perUnit: number | null; badge: string | null; checkoutUrl: string }[]> = {
   "sao-bento": [
-    { qty: 1, label: "1 Unidade", price: 19, perUnit: null, checkoutUrl: "https://pay.rosamisterio.site/checkout/ad448ed6-2adb-407d-aa33-b2612ba6a265" },
-    { qty: 2, label: "2 Unidades", price: 29, perUnit: 15, checkoutUrl: "https://pay.rosamisterio.site/checkout/fc4d0f20-847c-429b-9812-26cbf8368390" },
-    { qty: 3, label: "3 Unidades", price: 39, perUnit: 13, checkoutUrl: "https://pay.rosamisterio.site/checkout/ff7b0935-972c-4678-bc80-b849bcdd094e" },
+    { qty: 1, label: "1 Unidade", price: 19, oldPrice: 29, perUnit: null, badge: null, checkoutUrl: "https://pay.rosamisterio.site/checkout/ad448ed6-2adb-407d-aa33-b2612ba6a265" },
+    { qty: 2, label: "2 Unidades", price: 29, oldPrice: 69, perUnit: 15, badge: "Mais vendido", checkoutUrl: "https://pay.rosamisterio.site/checkout/fc4d0f20-847c-429b-9812-26cbf8368390" },
+    { qty: 3, label: "3 Unidades", price: 39, oldPrice: 89, perUnit: 13, badge: null, checkoutUrl: "https://pay.rosamisterio.site/checkout/ff7b0935-972c-4678-bc80-b849bcdd094e" },
   ],
   "aparecida": [
-    { qty: 1, label: "1 Unidade", price: 19, perUnit: null, checkoutUrl: "https://pay.rosamisterio.site/checkout/f299c504-6092-4196-91cd-381421e16619" },
-    { qty: 2, label: "2 Unidades", price: 29, perUnit: 15, checkoutUrl: "https://pay.rosamisterio.site/checkout/95e182d7-4338-430b-b2f5-482d39d51adc" },
-    { qty: 3, label: "3 Unidades", price: 39, perUnit: 13, checkoutUrl: "https://pay.rosamisterio.site/checkout/d09219cb-533c-4ba4-921f-45cf5592d75f" },
+    { qty: 1, label: "1 Unidade", price: 19, oldPrice: 29, perUnit: null, badge: null, checkoutUrl: "https://pay.rosamisterio.site/checkout/f299c504-6092-4196-91cd-381421e16619" },
+    { qty: 2, label: "2 Unidades", price: 29, oldPrice: 69, perUnit: 15, badge: "Mais vendido", checkoutUrl: "https://pay.rosamisterio.site/checkout/95e182d7-4338-430b-b2f5-482d39d51adc" },
+    { qty: 3, label: "3 Unidades", price: 39, oldPrice: 89, perUnit: 13, badge: null, checkoutUrl: "https://pay.rosamisterio.site/checkout/d09219cb-533c-4ba4-921f-45cf5592d75f" },
   ],
 };
 
@@ -100,7 +100,7 @@ const Index = () => {
       {/* Header - Sticky */}
       <header className="w-full py-3 bg-card text-foreground sticky top-0 z-50 shadow-md border-b border-border">
         <div className="max-w-5xl mx-auto px-4 flex items-center justify-center">
-          <img src="/images/logo-header.png" alt="Loja Rosa Mistério" className="h-10" />
+          <span className="text-lg md:text-xl font-bold text-primary">🐣 Promoção de Páscoa 70% OFF</span>
         </div>
       </header>
 
@@ -180,10 +180,13 @@ const Index = () => {
                     selected === i ? "border-primary bg-primary/5" : "border-border hover:border-primary/40"
                   }`}
                 >
-                  <span className="font-medium text-foreground">{p.label}</span>
-                  <div className="text-right">
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-foreground">{p.label}</span>
+                    {p.badge && <span className="bg-primary text-primary-foreground text-[10px] font-bold px-2 py-0.5 rounded-full">{p.badge}</span>}
+                  </div>
+                  <div className="text-right flex items-center gap-2">
+                    <span className="text-sm text-muted-foreground line-through">R$ {p.oldPrice}</span>
                     <span className="font-bold text-primary text-lg">R$ {p.price}</span>
-                    {p.perUnit && <span className="block text-xs text-muted-foreground line-through">R$ {p.perUnit}/un</span>}
                   </div>
                 </button>
               ))}
@@ -306,8 +309,14 @@ const Index = () => {
                     selected === i ? "border-primary bg-primary/5" : "border-border hover:border-primary/40"
                   }`}
                 >
-                  <span className="font-medium text-foreground">{p.label}</span>
-                  <span className="font-bold text-primary">R$ {p.price}</span>
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-foreground">{p.label}</span>
+                    {p.badge && <span className="bg-primary text-primary-foreground text-[10px] font-bold px-2 py-0.5 rounded-full">{p.badge}</span>}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm text-muted-foreground line-through">R$ {p.oldPrice}</span>
+                    <span className="font-bold text-primary">R$ {p.price}</span>
+                  </div>
                 </button>
               ))}
             </div>

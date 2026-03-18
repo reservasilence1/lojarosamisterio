@@ -1,9 +1,9 @@
 const photos = [
-  "/images/carrossel-1.jpg",
-  "/images/carrossel-2.jpg",
-  "/images/carrossel-3.jpg",
-  "/images/carrossel-4.jpg",
-  "/images/carrossel-5.jpg",
+  "/images/carrossel-1.webp",
+  "/images/carrossel-2.webp",
+  "/images/carrossel-3.webp",
+  "/images/carrossel-4.webp",
+  "/images/carrossel-5.webp",
 ];
 
 const CustomerPhotosCarousel = () => {

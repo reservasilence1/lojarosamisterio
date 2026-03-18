@@ -16,7 +16,7 @@ const ProductDetails = () => {
       {/* Product detail image placeholder */}
       <div className="rounded-lg overflow-hidden border border-border mb-8">
         <img
-          src="/images/terco-detalhes.jpg"
+          src="/images/terco-detalhes.webp"
           alt="Detalhes do Terço Católico"
           className="w-full h-auto object-cover"
         />
