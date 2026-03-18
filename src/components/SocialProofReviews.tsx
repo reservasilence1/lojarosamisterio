@@ -31,7 +31,7 @@ const reviewsData: Review[] = [
     id: 2,
     username: "joao_pedro_fiel",
     stars: 5,
-    variation: "Nossa Senhora Aparecida",
+    variation: "São Bento",
     text: "Superou todas as expectativas! O acabamento é impecável, parece peça de antiquário. As contas de madeira são firmes e o cordão muito resistente. Recomendo demais!",
     media: [
       { type: "video", src: "/images/provans4.mp4", thumbnail: "/images/cliente-4.jpg" },
