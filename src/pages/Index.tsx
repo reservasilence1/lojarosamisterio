@@ -84,8 +84,6 @@ const Index = () => {
   const [selected, setSelected] = useState(0);
   const [selectedModel, setSelectedModel] = useState(0);
   const [selectedPhoto, setSelectedPhoto] = useState(0);
-  const [cartOpen, setCartOpen] = useState(false);
-  const cartRef = useRef<HTMLDivElement>(null);
 
   const currentModel = models[selectedModel];
   const prices = pricesByModel[currentModel.id];
