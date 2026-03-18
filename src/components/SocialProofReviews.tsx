@@ -20,9 +20,9 @@ const reviewsData: Review[] = [
     variation: "Nossa Senhora Aparecida",
     text: "Produto maravilhoso! A qualidade do bronze é impressionante e as placas dos mistérios são perfeitas para meditar. Minha família toda amou, já estou comprando mais para presentear.",
     media: [
-      { type: "image", src: "/images/cliente-1.jpg" },
-      { type: "image", src: "/images/cliente-2.jpg" },
-      { type: "video", src: "/images/provans3.mp4", thumbnail: "/images/cliente-3.jpg" },
+      { type: "image", src: "/images/cliente-1.webp" },
+      { type: "image", src: "/images/cliente-2.webp" },
+      { type: "video", src: "/images/provans3.mp4", thumbnail: "/images/cliente-3.webp" },
     ],
     helpful: 12,
     date: "15/03/2026",
@@ -34,8 +34,8 @@ const reviewsData: Review[] = [
     variation: "São Bento",
     text: "Superou todas as expectativas! O acabamento é impecável, parece peça de antiquário. As contas de madeira são firmes e o cordão muito resistente. Recomendo demais!",
     media: [
-      { type: "video", src: "/images/provans4.mp4", thumbnail: "/images/cliente-4.jpg" },
-      { type: "image", src: "/images/cliente-5.jpg" },
+      { type: "video", src: "/images/provans4.mp4", thumbnail: "/images/cliente-4.webp" },
+      { type: "image", src: "/images/cliente-5.webp" },
     ],
     helpful: 8,
     date: "12/03/2026",
@@ -47,7 +47,7 @@ const reviewsData: Review[] = [
     variation: "São Bento",
     text: "Comprei 3 unidades e todas vieram perfeitas. A embalagem é linda, presenteei minha mãe e minha sogra. Elas choraram de emoção!",
     media: [
-      { type: "image", src: "/images/cliente-6.jpg" },
+      { type: "image", src: "/images/cliente-6.webp" },
     ],
     helpful: 5,
     date: "10/03/2026",
@@ -59,7 +59,7 @@ const reviewsData: Review[] = [
     variation: "Nossa Senhora Aparecida",
     text: "Uso no grupo de oração da paróquia. As placas dos mistérios facilitam muito para quem está aprendendo a rezar o terço. Material de alta qualidade.",
     media: [
-      { type: "image", src: "/images/cliente-7.jpg" },
+      { type: "image", src: "/images/cliente-7.webp" },
     ],
     helpful: 15,
     date: "08/03/2026",
@@ -71,7 +71,7 @@ const reviewsData: Review[] = [
     variation: "Nossa Senhora Aparecida",
     text: "Muito bonito e bem feito. O bronze realmente dá um ar de relíquia antiga. Entrega foi rápida também. Amei!",
     media: [
-      { type: "image", src: "/images/cliente-8.jpg" },
+      { type: "image", src: "/images/cliente-8.webp" },
     ],
     helpful: 3,
     date: "05/03/2026",
