@@ -77,6 +77,8 @@ const Index = () => {
   const [selected, setSelected] = useState(0);
   const [selectedModel, setSelectedModel] = useState(0);
   const [selectedPhoto, setSelectedPhoto] = useState(0);
+  const [cartOpen, setCartOpen] = useState(false);
+  const cartRef = useRef<HTMLDivElement>(null);
 
   const currentModel = models[selectedModel];
 
@@ -84,6 +86,16 @@ const Index = () => {
     setSelectedModel(i);
     setSelectedPhoto(0);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (cartRef.current && !cartRef.current.contains(e.target as Node)) {
+        setCartOpen(false);
+      }
+    };
+    if (cartOpen) document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [cartOpen]);
 
   return (
     <div className="min-h-screen bg-background">
