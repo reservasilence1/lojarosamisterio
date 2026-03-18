@@ -193,12 +193,20 @@ const SocialProofReviews = () => {
                     onClick={() => m.type === "video" && m.src && setActiveVideo(m.src)}
                   >
                     {m.type === "video" ? (
-                      <video
-                        src={m.src}
-                        muted
-                        preload="metadata"
-                        className="w-full h-full object-cover"
-                      />
+                      m.thumbnail ? (
+                        <img
+                          src={m.thumbnail}
+                          alt="Thumbnail do vídeo"
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <video
+                          src={m.src}
+                          muted
+                          preload="metadata"
+                          className="w-full h-full object-cover"
+                        />
+                      )
                     ) : (
                       <img
                         src={m.src}

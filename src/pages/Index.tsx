@@ -309,8 +309,14 @@ const Index = () => {
                     selected === i ? "border-primary bg-primary/5" : "border-border hover:border-primary/40"
                   }`}
                 >
-                  <span className="font-medium text-foreground">{p.label}</span>
-                  <span className="font-bold text-primary">R$ {p.price}</span>
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-foreground">{p.label}</span>
+                    {p.badge && <span className="bg-primary text-primary-foreground text-[10px] font-bold px-2 py-0.5 rounded-full">{p.badge}</span>}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm text-muted-foreground line-through">R$ {p.oldPrice}</span>
+                    <span className="font-bold text-primary">R$ {p.price}</span>
+                  </div>
                 </button>
               ))}
             </div>
