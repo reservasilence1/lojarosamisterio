@@ -100,8 +100,24 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header - Sticky */}
-      <header className="w-full py-3 bg-card text-foreground text-center sticky top-0 z-50 shadow-md border-b border-border">
-        <img src="/images/logo-header.png" alt="Loja Rosa Mistério" className="h-10 mx-auto" />
+      <header className="w-full py-3 bg-card text-foreground sticky top-0 z-50 shadow-md border-b border-border">
+        <div className="max-w-5xl mx-auto px-4 flex items-center justify-between">
+          <div className="w-10" />
+          <img src="/images/logo-header.png" alt="Loja Rosa Mistério" className="h-10" />
+          <div className="relative" ref={cartRef}>
+            <button onClick={() => setCartOpen(!cartOpen)} className="relative p-2 text-foreground hover:text-primary transition-colors">
+              <ShoppingCart className="w-6 h-6" />
+              <span className="absolute -top-1 -right-1 w-5 h-5 bg-primary text-primary-foreground text-[10px] font-bold rounded-full flex items-center justify-center">0</span>
+            </button>
+            {cartOpen && (
+              <div className="absolute right-0 top-12 w-72 bg-card border border-border rounded-lg shadow-lg p-6 text-center space-y-3 z-50">
+                <ShoppingCart className="w-10 h-10 mx-auto text-muted-foreground" />
+                <p className="text-sm font-semibold text-foreground">Seu carrinho está vazio</p>
+                <p className="text-xs text-muted-foreground">Adicione um produto para continuar.</p>
+              </div>
+            )}
+          </div>
+        </div>
       </header>
 
       {/* Hero Section */}
