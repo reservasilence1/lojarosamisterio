@@ -1,4 +1,10 @@
-const photos = Array.from({ length: 8 }, (_, i) => `/images/cliente-${i + 1}.jpg`);
+const photos = [
+  "/images/carrossel-1.jpg",
+  "/images/carrossel-2.jpg",
+  "/images/carrossel-3.jpg",
+  "/images/carrossel-4.jpg",
+  "/images/carrossel-5.jpg",
+];
 
 const CustomerPhotosCarousel = () => {
   return (
