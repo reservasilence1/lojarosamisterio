@@ -192,11 +192,20 @@ const SocialProofReviews = () => {
                     className="relative w-24 h-24 rounded-md overflow-hidden border border-border bg-muted cursor-pointer"
                     onClick={() => m.type === "video" && m.src && setActiveVideo(m.src)}
                   >
-                    <img
-                      src={m.type === "video" ? m.thumbnail : m.src}
-                      alt="Foto do cliente"
-                      className="w-full h-full object-cover"
-                    />
+                    {m.type === "video" ? (
+                      <video
+                        src={m.src}
+                        muted
+                        preload="metadata"
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <img
+                        src={m.src}
+                        alt="Foto do cliente"
+                        className="w-full h-full object-cover"
+                      />
+                    )}
                     {m.type === "video" && (
                       <div className="absolute inset-0 flex items-center justify-center bg-foreground/30">
                         <Play className="w-6 h-6 text-primary-foreground fill-primary-foreground" />
