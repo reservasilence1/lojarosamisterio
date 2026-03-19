@@ -138,6 +138,10 @@ const Index = () => {
             <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
               Terço Católico de Contemplação dos Mistérios
             </h1>
+            <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+              <span>Entrega via</span>
+              <img src="/images/correios-logo.svg" alt="Correios" className="h-3.5 w-auto" />
+            </div>
             <p className="text-sm text-muted-foreground">Madeira Nobre & Bronze — Medalha de {currentModel.label} e Crucifixo</p>
             <div className="flex items-center gap-2">
               <div className="flex text-primary">
