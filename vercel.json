@@ -6,11 +6,11 @@
   "rewrites": [
     {
       "source": "/frete/:path*",
-      "destination": "https://rosamisteriofrete.vercel.app/frete/:path*"
+      "destination": "https://rosamisteriofrete.vercel.app/:path*"
     },
     {
       "source": "/frete",
-      "destination": "https://rosamisteriofrete.vercel.app/frete"
+      "destination": "https://rosamisteriofrete.vercel.app"
     },
     {
       "source": "/(.*)",
