@@ -102,7 +102,7 @@ const Index = () => {
         <div className="max-w-5xl mx-auto px-4 flex items-center justify-center">
           <span className="text-lg md:text-xl font-bold text-primary flex items-center gap-2">
             <img src="/images/pascoa-nobg.png" alt="Páscoa" className="w-7 h-7 object-contain" />
-            Promoção de Páscoa 70% OFF
+            Promoção de Páscoa <span className="bg-primary text-primary-foreground text-xs font-bold px-2 py-0.5 rounded-full">70% OFF</span>
           </span>
         </div>
       </header>
