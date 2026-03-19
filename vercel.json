@@ -5,12 +5,12 @@
   "framework": "vite",
   "rewrites": [
     {
-      "source": "/frete",
-      "destination": "https://rosamisteriofrete.vercel.app"
+      "source": "/frete/:path*",
+      "destination": "https://rosamisteriofrete.vercel.app/frete/:path*"
     },
     {
-      "source": "/frete/:path*",
-      "destination": "https://rosamisteriofrete.vercel.app/:path*"
+      "source": "/frete",
+      "destination": "https://rosamisteriofrete.vercel.app/frete"
     },
     {
       "source": "/(.*)",
