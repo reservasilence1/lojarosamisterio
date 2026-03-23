@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Star, ShieldCheck, Truck, Lock, ShoppingCart, Crown, Shield, Gem } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -85,6 +85,30 @@ const Index = () => {
   const [selectedModel, setSelectedModel] = useState(0);
   const [selectedPhoto, setSelectedPhoto] = useState(0);
 
+  useEffect(() => {
+  // Pixel UTMify
+  window.pixelId = "69996f756285f3591bdfb2a8";
+
+  const pixelScript = document.createElement("script");
+  pixelScript.async = true;
+  pixelScript.defer = true;
+  pixelScript.src = "https://cdn.utmify.com.br/scripts/pixel/pixel.js";
+  document.head.appendChild(pixelScript);
+
+  // Captura UTM
+  const utmScript = document.createElement("script");
+  utmScript.async = true;
+  utmScript.defer = true;
+  utmScript.src = "https://cdn.utmify.com.br/scripts/utms/latest.js";
+  utmScript.setAttribute("data-utmify-prevent-subids", "true");
+  document.head.appendChild(utmScript);
+
+  return () => {
+    document.head.removeChild(pixelScript);
+    document.head.removeChild(utmScript);
+  };
+}, []);
+
   const currentModel = models[selectedModel];
   const prices = pricesByModel[currentModel.id];
 
@@ -124,7 +148,7 @@ const Index = () => {
                     selectedPhoto === i ? "border-primary ring-2 ring-primary/30" : "border-border"
                   }`}
                 >
-                  <img src={img} alt={`Detalhe ${i + 1}`} className="w-full h-full object-cover" />
+                  <img src={img} alt={⁠ Detalhe ${i + 1} ⁠} className="w-full h-full object-cover" />
                 </div>
               ))}
             </div>
@@ -199,10 +223,20 @@ const Index = () => {
               ))}
             </div>
 
-            <Button
-              className="w-full h-14 text-lg font-bold gap-2 rounded-lg bg-[#348d35] hover:bg-[#2d7a2e] text-white"
-              onClick={() => window.open(prices[selected].checkoutUrl, "_blank")}
-            >
+              <Button
+                className="w-full max-w-md h-14 text-lg font-bold gap-2 rounded-lg bg-[#348d35] hover:bg-[#2d7a2e] text-white"
+                onClick={() => {
+                  const baseUrl = prices[selected].checkoutUrl;
+                  const params = window.location.search;
+              
+                  const finalUrl = params
+                    ? baseUrl + params
+                    : baseUrl;
+              
+                  window.open(finalUrl, "_blank");
+                }}
+              >
+                             
               <ShoppingCart className="w-5 h-5" />
               Comprar Agora — R$ {prices[selected].price}
             </Button>
@@ -278,7 +312,7 @@ const Index = () => {
         <h2 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-8">Perguntas Frequentes</h2>
         <Accordion type="single" collapsible className="space-y-2">
           {faqs.map((f, i) => (
-            <AccordionItem key={i} value={`faq-${i}`} className="border border-border rounded-lg px-4">
+            <AccordionItem key={i} value={⁠ faq-${i} ⁠} className="border border-border rounded-lg px-4">
               <AccordionTrigger className="text-sm font-medium text-foreground hover:no-underline">{f.q}</AccordionTrigger>
               <AccordionContent className="text-sm text-muted-foreground">{f.a}</AccordionContent>
             </AccordionItem>
@@ -328,9 +362,19 @@ const Index = () => {
               ))}
             </div>
             <Button
-              className="w-full max-w-md h-14 text-lg font-bold gap-2 rounded-lg bg-[#348d35] hover:bg-[#2d7a2e] text-white"
-              onClick={() => window.open(prices[selected].checkoutUrl, "_blank")}
-            >
+                className="w-full max-w-md h-14 text-lg font-bold gap-2 rounded-lg bg-[#348d35] hover:bg-[#2d7a2e] text-white"
+                onClick={() => {
+                  const baseUrl = prices[selected].checkoutUrl;
+                  const params = window.location.search;
+              
+                  const finalUrl = params
+                    ? baseUrl + params
+                    : baseUrl;
+              
+                  window.open(finalUrl, "_blank");
+                }}
+              >
+              
               <ShoppingCart className="w-5 h-5" />
               Comprar Agora — R$ {prices[selected].price}
             </Button>
@@ -339,10 +383,8 @@ const Index = () => {
       </section>
 
       <footer className="py-6 text-center text-xs text-muted-foreground">
-        © 2026 Loja Rosa Mistério. Todos os direitos reservados.
+        ©️ 2026 Loja Rosa Mistério. Todos os direitos reservados.
       </footer>
     </div>
   );
 };
-
-export default Index;
