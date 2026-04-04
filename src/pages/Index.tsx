@@ -362,23 +362,21 @@ const Index = () => {
             {/* Model Selector */}
             <div className="max-w-md mx-auto space-y-2">
               <p className="text-sm font-bold text-foreground text-left">Modelo:</p>
-              <div className="grid grid-cols-2 gap-2 justify-items-center">
+              <div className="flex flex-wrap gap-2 justify-center">
                 {models.map((model, i) => (
                   <button
                     key={model.id}
                     onClick={() => handleModelChange(i)}
-                    className={`flex items-center gap-1.5 px-3 py-2 rounded-lg border-2 transition-all text-xs sm:text-sm w-full justify-center ${
-                      i === 2 ? "col-span-2 max-w-[50%]" : ""
-                    } ${
+                    className={`flex items-center gap-1.5 px-3 py-2 rounded-lg border-2 transition-all text-xs sm:text-sm ${
                       selectedModel === i
                         ? "border-primary bg-primary/5 text-foreground font-bold"
                         : "border-border hover:border-primary/40 text-muted-foreground"
                     }`}
                   >
-                    <div className="w-7 h-7 rounded-full overflow-hidden border border-border shrink-0">
+                    <div className="w-6 h-6 rounded-full overflow-hidden border border-border shrink-0">
                       <img src={model.images[0]} alt={model.label} className="w-full h-full object-cover" />
                     </div>
-                    <span className="text-xs sm:text-sm whitespace-nowrap">{model.label}</span>
+                    <span className="text-xs whitespace-nowrap">{model.label}</span>
                   </button>
                 ))}
               </div>
