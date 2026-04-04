@@ -172,11 +172,11 @@ const Index = () => {
           </div>
 
           {/* Product Info */}
-          <div className="space-y-4">
+          <div className="space-y-4 overflow-hidden">
             <span className="inline-block bg-primary/15 text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
               ✦ Edição {currentModel.label}
             </span>
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground leading-tight">
               Terço Católico de Contemplação dos Mistérios
             </h1>
             <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
@@ -197,21 +197,21 @@ const Index = () => {
             {/* Model Selector - Shopee style */}
             <div className="space-y-2">
               <p className="text-sm font-bold text-foreground">Modelo:</p>
-              <div className="flex gap-3">
+              <div className="flex flex-wrap gap-2">
                 {models.map((model, i) => (
                   <button
                     key={model.id}
                     onClick={() => handleModelChange(i)}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-lg border-2 transition-all text-sm ${
+                    className={`flex items-center gap-1.5 px-3 py-2 rounded-lg border-2 transition-all text-xs sm:text-sm ${
                       selectedModel === i
                         ? "border-primary bg-primary/5 text-foreground font-bold"
                         : "border-border hover:border-primary/40 text-muted-foreground"
                     }`}
                   >
-                    <div className="w-8 h-8 rounded-full overflow-hidden border border-border shrink-0">
+                    <div className="w-7 h-7 rounded-full overflow-hidden border border-border shrink-0">
                       <img src={model.images[0]} alt={model.label} className="w-full h-full object-cover" />
                     </div>
-                    {model.label}
+                    <span className="whitespace-nowrap">{model.label}</span>
                   </button>
                 ))}
               </div>
@@ -224,17 +224,17 @@ const Index = () => {
                 <button
                   key={i}
                   onClick={() => setSelected(i)}
-                  className={`w-full flex items-center justify-between px-4 py-3 rounded-lg border-2 transition-all ${
+                  className={`w-full flex items-center justify-between px-3 sm:px-4 py-3 rounded-lg border-2 transition-all ${
                     selected === i ? "border-primary bg-primary/5" : "border-border hover:border-primary/40"
                   }`}
                 >
-                  <div className="flex items-center gap-2">
-                    <span className="font-medium text-foreground">{p.label}</span>
-                    {p.badge && <span className="bg-primary text-primary-foreground text-[10px] font-bold px-2 py-0.5 rounded-full">{p.badge}</span>}
+                  <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 shrink">
+                    <span className="font-medium text-foreground text-sm sm:text-base whitespace-nowrap">{p.label}</span>
+                    {p.badge && <span className="bg-primary text-primary-foreground text-[9px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 rounded-full whitespace-nowrap">{p.badge}</span>}
                   </div>
-                  <div className="text-right flex items-center gap-2">
-                    <span className="text-sm text-muted-foreground line-through">R$ {p.oldPrice}</span>
-                    <span className="font-bold text-primary text-lg">R$ {p.price}</span>
+                  <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                    <span className="text-xs sm:text-sm text-muted-foreground line-through">R$ {p.oldPrice}</span>
+                    <span className="font-bold text-primary text-base sm:text-lg">R$ {p.price}</span>
                   </div>
                 </button>
               ))}
