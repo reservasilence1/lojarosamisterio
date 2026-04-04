@@ -102,28 +102,29 @@ const Index = () => {
   const [selectedPhoto, setSelectedPhoto] = useState(0);
 
   useEffect(() => {
-  // Pixel UTMify
-  window.pixelId = "69996f756285f3591bdfb2a8";
+    // Pixel UTMify
+    const trackingWindow = window as Window & { pixelId?: string };
+    trackingWindow.pixelId = "69996f756285f3591bdfb2a8";
 
-  const pixelScript = document.createElement("script");
-  pixelScript.async = true;
-  pixelScript.defer = true;
-  pixelScript.src = "https://cdn.utmify.com.br/scripts/pixel/pixel.js";
-  document.head.appendChild(pixelScript);
+    const pixelScript = document.createElement("script");
+    pixelScript.async = true;
+    pixelScript.defer = true;
+    pixelScript.src = "https://cdn.utmify.com.br/scripts/pixel/pixel.js";
+    document.head.appendChild(pixelScript);
 
-  // Captura UTM
-  const utmScript = document.createElement("script");
-  utmScript.async = true;
-  utmScript.defer = true;
-  utmScript.src = "https://cdn.utmify.com.br/scripts/utms/latest.js";
-  utmScript.setAttribute("data-utmify-prevent-subids", "true");
-  document.head.appendChild(utmScript);
+    // Captura UTM
+    const utmScript = document.createElement("script");
+    utmScript.async = true;
+    utmScript.defer = true;
+    utmScript.src = "https://cdn.utmify.com.br/scripts/utms/latest.js";
+    utmScript.setAttribute("data-utmify-prevent-subids", "true");
+    document.head.appendChild(utmScript);
 
-  return () => {
-    document.head.removeChild(pixelScript);
-    document.head.removeChild(utmScript);
-  };
-}, []);
+    return () => {
+      document.head.removeChild(pixelScript);
+      document.head.removeChild(utmScript);
+    };
+  }, []);
 
   const currentModel = models[selectedModel];
   const prices = pricesByModel[currentModel.id];
