@@ -31,6 +31,17 @@ const models = [
       "/images/aparecida-5.webp",
     ],
   },
+  {
+    id: "casal",
+    label: "Terço do Casal",
+    images: [
+      "/images/terco-casal.webp",
+      "/images/casal-2.webp",
+      "/images/casal-3.webp",
+      "/images/casal-4.webp",
+      "/images/casal-5.webp",
+    ],
+  },
 ];
 
 const pricesByModel: Record<string, { qty: number; label: string; price: number; oldPrice: number; perUnit: number | null; badge: string | null; checkoutUrl: string }[]> = {
