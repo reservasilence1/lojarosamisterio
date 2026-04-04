@@ -197,21 +197,21 @@ const Index = () => {
             {/* Model Selector - Shopee style */}
             <div className="space-y-2">
               <p className="text-sm font-bold text-foreground">Modelo:</p>
-              <div className="flex gap-3">
+              <div className="flex flex-wrap gap-2">
                 {models.map((model, i) => (
                   <button
                     key={model.id}
                     onClick={() => handleModelChange(i)}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-lg border-2 transition-all text-sm ${
+                    className={`flex items-center gap-1.5 px-3 py-2 rounded-lg border-2 transition-all text-xs sm:text-sm ${
                       selectedModel === i
                         ? "border-primary bg-primary/5 text-foreground font-bold"
                         : "border-border hover:border-primary/40 text-muted-foreground"
                     }`}
                   >
-                    <div className="w-8 h-8 rounded-full overflow-hidden border border-border shrink-0">
+                    <div className="w-7 h-7 rounded-full overflow-hidden border border-border shrink-0">
                       <img src={model.images[0]} alt={model.label} className="w-full h-full object-cover" />
                     </div>
-                    {model.label}
+                    <span className="whitespace-nowrap">{model.label}</span>
                   </button>
                 ))}
               </div>
