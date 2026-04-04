@@ -362,36 +362,23 @@ const Index = () => {
             {/* Model Selector */}
             <div className="max-w-md mx-auto space-y-2">
               <p className="text-sm font-bold text-foreground text-left">Modelo:</p>
-              <div className="grid grid-cols-2 gap-2">
-                {models.slice(0, 2).map((model, i) => (
+              <div className="flex flex-col gap-2">
+                {models.map((model, i) => (
                   <button
                     key={model.id}
                     onClick={() => handleModelChange(i)}
-                    className={`flex items-center gap-1 px-2 py-2 rounded-lg border-2 transition-all text-xs ${
+                    className={`flex items-center gap-2 px-3 py-2 rounded-lg border-2 transition-all text-xs sm:text-sm ${
                       selectedModel === i
                         ? "border-primary bg-primary/5 text-foreground font-bold"
                         : "border-border hover:border-primary/40 text-muted-foreground"
                     }`}
                   >
-                    <div className="w-6 h-6 rounded-full overflow-hidden border border-border shrink-0">
+                    <div className="w-7 h-7 rounded-full overflow-hidden border border-border shrink-0">
                       <img src={model.images[0]} alt={model.label} className="w-full h-full object-cover" />
                     </div>
-                    <span className="text-xs whitespace-nowrap">{model.label}</span>
+                    <span className="whitespace-nowrap">{model.label}</span>
                   </button>
                 ))}
-                <button
-                  onClick={() => handleModelChange(2)}
-                  className={`col-span-2 mx-auto flex items-center gap-1 px-3 py-2 rounded-lg border-2 transition-all text-xs ${
-                    selectedModel === 2
-                      ? "border-primary bg-primary/5 text-foreground font-bold"
-                      : "border-border hover:border-primary/40 text-muted-foreground"
-                  }`}
-                >
-                  <div className="w-6 h-6 rounded-full overflow-hidden border border-border shrink-0">
-                    <img src={models[2].images[0]} alt={models[2].label} className="w-full h-full object-cover" />
-                  </div>
-                  <span className="text-xs whitespace-nowrap">{models[2].label}</span>
-                </button>
               </div>
             </div>
 
