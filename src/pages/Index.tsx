@@ -172,7 +172,7 @@ const Index = () => {
           </div>
 
           {/* Product Info */}
-          <div className="space-y-4">
+          <div className="space-y-4 overflow-hidden">
             <span className="inline-block bg-primary/15 text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
               ✦ Edição {currentModel.label}
             </span>
