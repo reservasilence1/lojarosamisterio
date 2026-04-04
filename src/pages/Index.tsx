@@ -31,6 +31,17 @@ const models = [
       "/images/aparecida-5.webp",
     ],
   },
+  {
+    id: "casal",
+    label: "Terço do Casal",
+    images: [
+      "/images/terco-casal.webp",
+      "/images/casal-2.webp",
+      "/images/casal-3.webp",
+      "/images/casal-4.webp",
+      "/images/casal-5.webp",
+    ],
+  },
 ];
 
 const pricesByModel: Record<string, { qty: number; label: string; price: number; oldPrice: number; perUnit: number | null; badge: string | null; checkoutUrl: string }[]> = {
@@ -43,6 +54,11 @@ const pricesByModel: Record<string, { qty: number; label: string; price: number;
     { qty: 1, label: "1 Unidade", price: 19, oldPrice: 29, perUnit: null, badge: null, checkoutUrl: "https://pay.rosamisterio.site/checkout/f299c504-6092-4196-91cd-381421e16619" },
     { qty: 2, label: "2 Unidades", price: 29, oldPrice: 69, perUnit: 15, badge: "Mais vendido", checkoutUrl: "https://pay.rosamisterio.site/checkout/95e182d7-4338-430b-b2f5-482d39d51adc" },
     { qty: 3, label: "3 Unidades", price: 39, oldPrice: 89, perUnit: 13, badge: null, checkoutUrl: "https://pay.rosamisterio.site/checkout/d09219cb-533c-4ba4-921f-45cf5592d75f" },
+  ],
+  "casal": [
+    { qty: 1, label: "1 Unidade", price: 19, oldPrice: 29, perUnit: null, badge: null, checkoutUrl: "https://pay.rosamisterio.site/checkout/51570b1a-f693-4774-8b4b-4a161f71bd1b" },
+    { qty: 2, label: "2 Unidades", price: 29, oldPrice: 69, perUnit: 15, badge: "Mais vendido", checkoutUrl: "https://pay.rosamisterio.site/checkout/65bcbc85-0ea6-4bb4-a045-b3c76b62982d" },
+    { qty: 3, label: "3 Unidades", price: 39, oldPrice: 89, perUnit: 13, badge: null, checkoutUrl: "https://pay.rosamisterio.site/checkout/c7f71b3a-d027-48ca-ba28-5320549d3ceb" },
   ],
 };
 
@@ -148,7 +164,7 @@ const Index = () => {
                     selectedPhoto === i ? "border-primary ring-2 ring-primary/30" : "border-border"
                   }`}
                 >
-                  <img src={img} alt={⁠ Detalhe ${i + 1} ⁠} className="w-full h-full object-cover" />
+                  <img src={img} alt={`Detalhe ${i + 1}`} className="w-full h-full object-cover" />
                 </div>
               ))}
             </div>
@@ -312,7 +328,7 @@ const Index = () => {
         <h2 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-8">Perguntas Frequentes</h2>
         <Accordion type="single" collapsible className="space-y-2">
           {faqs.map((f, i) => (
-            <AccordionItem key={i} value={⁠ faq-${i} ⁠} className="border border-border rounded-lg px-4">
+            <AccordionItem key={i} value={`faq-${i}`} className="border border-border rounded-lg px-4">
               <AccordionTrigger className="text-sm font-medium text-foreground hover:no-underline">{f.q}</AccordionTrigger>
               <AccordionContent className="text-sm text-muted-foreground">{f.a}</AccordionContent>
             </AccordionItem>
@@ -341,6 +357,30 @@ const Index = () => {
           <CardContent className="py-10 px-8 text-center space-y-6">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground">Garanta o Seu Terço Agora</h2>
             <p className="text-sm text-muted-foreground">Escolha a melhor oferta e comece sua jornada de contemplação.</p>
+            
+            {/* Model Selector */}
+            <div className="max-w-md mx-auto space-y-2">
+              <p className="text-sm font-bold text-foreground text-left">Modelo:</p>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {models.map((model, i) => (
+                  <button
+                    key={model.id}
+                    onClick={() => handleModelChange(i)}
+                    className={`flex items-center gap-2 px-3 py-2 rounded-lg border-2 transition-all text-sm ${
+                      selectedModel === i
+                        ? "border-primary bg-primary/5 text-foreground font-bold"
+                        : "border-border hover:border-primary/40 text-muted-foreground"
+                    }`}
+                  >
+                    <div className="w-7 h-7 rounded-full overflow-hidden border border-border shrink-0">
+                      <img src={model.images[0]} alt={model.label} className="w-full h-full object-cover" />
+                    </div>
+                    <span className="text-xs sm:text-sm">{model.label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
             <div className="max-w-md mx-auto space-y-2">
               {prices.map((p, i) => (
                 <button
