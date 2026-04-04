@@ -164,7 +164,7 @@ const Index = () => {
                     selectedPhoto === i ? "border-primary ring-2 ring-primary/30" : "border-border"
                   }`}
                 >
-                  <img src={img} alt={⁠ Detalhe ${i + 1} ⁠} className="w-full h-full object-cover" />
+                  <img src={img} alt={`Detalhe ${i + 1}`} className="w-full h-full object-cover" />
                 </div>
               ))}
             </div>
@@ -328,7 +328,7 @@ const Index = () => {
         <h2 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-8">Perguntas Frequentes</h2>
         <Accordion type="single" collapsible className="space-y-2">
           {faqs.map((f, i) => (
-            <AccordionItem key={i} value={⁠ faq-${i} ⁠} className="border border-border rounded-lg px-4">
+            <AccordionItem key={i} value={`faq-${i}`} className="border border-border rounded-lg px-4">
               <AccordionTrigger className="text-sm font-medium text-foreground hover:no-underline">{f.q}</AccordionTrigger>
               <AccordionContent className="text-sm text-muted-foreground">{f.a}</AccordionContent>
             </AccordionItem>
