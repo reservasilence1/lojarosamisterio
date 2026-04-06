@@ -31,17 +31,6 @@ const models = [
       "/images/aparecida-5.webp",
     ],
   },
-  {
-    id: "casal",
-    label: "Terço do Casal",
-    images: [
-      "/images/terco-casal.webp",
-      "/images/casal-2.webp",
-      "/images/casal-3.webp",
-      "/images/casal-4.webp",
-      "/images/casal-5.webp",
-    ],
-  },
 ];
 
 const pricesByModel: Record<string, { qty: number; label: string; price: number; oldPrice: number; perUnit: number | null; badge: string | null; checkoutUrl: string }[]> = {
@@ -54,11 +43,6 @@ const pricesByModel: Record<string, { qty: number; label: string; price: number;
     { qty: 1, label: "1 Unidade", price: 19, oldPrice: 29, perUnit: null, badge: null, checkoutUrl: "https://pay.rosamisterio.site/checkout/f299c504-6092-4196-91cd-381421e16619" },
     { qty: 2, label: "2 Unidades", price: 29, oldPrice: 69, perUnit: 15, badge: "Mais vendido", checkoutUrl: "https://pay.rosamisterio.site/checkout/95e182d7-4338-430b-b2f5-482d39d51adc" },
     { qty: 3, label: "3 Unidades", price: 39, oldPrice: 89, perUnit: 13, badge: null, checkoutUrl: "https://pay.rosamisterio.site/checkout/d09219cb-533c-4ba4-921f-45cf5592d75f" },
-  ],
-  "casal": [
-    { qty: 1, label: "1 Unidade", price: 19, oldPrice: 29, perUnit: null, badge: null, checkoutUrl: "https://pay.rosamisterio.site/checkout/51570b1a-f693-4774-8b4b-4a161f71bd1b" },
-    { qty: 2, label: "2 Unidades", price: 29, oldPrice: 69, perUnit: 15, badge: "Mais vendido", checkoutUrl: "https://pay.rosamisterio.site/checkout/65bcbc85-0ea6-4bb4-a045-b3c76b62982d" },
-    { qty: 3, label: "3 Unidades", price: 39, oldPrice: 89, perUnit: 13, badge: null, checkoutUrl: "https://pay.rosamisterio.site/checkout/c7f71b3a-d027-48ca-ba28-5320549d3ceb" },
   ],
 };
 
@@ -102,29 +86,28 @@ const Index = () => {
   const [selectedPhoto, setSelectedPhoto] = useState(0);
 
   useEffect(() => {
-    // Pixel UTMify
-    const trackingWindow = window as Window & { pixelId?: string };
-    trackingWindow.pixelId = "69996f756285f3591bdfb2a8";
+  // Pixel UTMify
+  window.pixelId = "69996f756285f3591bdfb2a8";
 
-    const pixelScript = document.createElement("script");
-    pixelScript.async = true;
-    pixelScript.defer = true;
-    pixelScript.src = "https://cdn.utmify.com.br/scripts/pixel/pixel.js";
-    document.head.appendChild(pixelScript);
+  const pixelScript = document.createElement("script");
+  pixelScript.async = true;
+  pixelScript.defer = true;
+  pixelScript.src = "https://cdn.utmify.com.br/scripts/pixel/pixel.js";
+  document.head.appendChild(pixelScript);
 
-    // Captura UTM
-    const utmScript = document.createElement("script");
-    utmScript.async = true;
-    utmScript.defer = true;
-    utmScript.src = "https://cdn.utmify.com.br/scripts/utms/latest.js";
-    utmScript.setAttribute("data-utmify-prevent-subids", "true");
-    document.head.appendChild(utmScript);
+  // Captura UTM
+  const utmScript = document.createElement("script");
+  utmScript.async = true;
+  utmScript.defer = true;
+  utmScript.src = "https://cdn.utmify.com.br/scripts/utms/latest.js";
+  utmScript.setAttribute("data-utmify-prevent-subids", "true");
+  document.head.appendChild(utmScript);
 
-    return () => {
-      document.head.removeChild(pixelScript);
-      document.head.removeChild(utmScript);
-    };
-  }, []);
+  return () => {
+    document.head.removeChild(pixelScript);
+    document.head.removeChild(utmScript);
+  };
+}, []);
 
   const currentModel = models[selectedModel];
   const prices = pricesByModel[currentModel.id];
@@ -143,7 +126,7 @@ const Index = () => {
         <div className="max-w-5xl mx-auto px-4 flex items-center justify-center">
           <span className="text-lg md:text-xl font-bold text-primary flex items-center gap-2">
             <img src="/images/pascoa-nobg.png" alt="Páscoa" className="w-7 h-7 object-contain" />
-            Promoção Dia das Mães <span className="bg-primary text-primary-foreground text-xs font-bold px-2 py-0.5 rounded-full">70% OFF</span>
+            Promoção de Páscoa <span className="bg-primary text-primary-foreground text-xs font-bold px-2 py-0.5 rounded-full">70% OFF</span>
           </span>
         </div>
       </header>
@@ -165,18 +148,18 @@ const Index = () => {
                     selectedPhoto === i ? "border-primary ring-2 ring-primary/30" : "border-border"
                   }`}
                 >
-                  <img src={img} alt={`Detalhe ${i + 1}`} className="w-full h-full object-cover" />
+                  <img src={img} alt={⁠ Detalhe ${i + 1} ⁠} className="w-full h-full object-cover" />
                 </div>
               ))}
             </div>
           </div>
 
           {/* Product Info */}
-          <div className="space-y-4 overflow-hidden">
+          <div className="space-y-4">
             <span className="inline-block bg-primary/15 text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
               ✦ Edição {currentModel.label}
             </span>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground leading-tight">
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
               Terço Católico de Contemplação dos Mistérios
             </h1>
             <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
@@ -197,21 +180,21 @@ const Index = () => {
             {/* Model Selector - Shopee style */}
             <div className="space-y-2">
               <p className="text-sm font-bold text-foreground">Modelo:</p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex gap-3">
                 {models.map((model, i) => (
                   <button
                     key={model.id}
                     onClick={() => handleModelChange(i)}
-                    className={`flex items-center gap-1.5 px-3 py-2 rounded-lg border-2 transition-all text-xs sm:text-sm ${
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg border-2 transition-all text-sm ${
                       selectedModel === i
                         ? "border-primary bg-primary/5 text-foreground font-bold"
                         : "border-border hover:border-primary/40 text-muted-foreground"
                     }`}
                   >
-                    <div className="w-7 h-7 rounded-full overflow-hidden border border-border shrink-0">
+                    <div className="w-8 h-8 rounded-full overflow-hidden border border-border shrink-0">
                       <img src={model.images[0]} alt={model.label} className="w-full h-full object-cover" />
                     </div>
-                    <span className="whitespace-nowrap">{model.label}</span>
+                    {model.label}
                   </button>
                 ))}
               </div>
@@ -224,17 +207,17 @@ const Index = () => {
                 <button
                   key={i}
                   onClick={() => setSelected(i)}
-                  className={`w-full flex items-center justify-between px-3 sm:px-4 py-3 rounded-lg border-2 transition-all ${
+                  className={`w-full flex items-center justify-between px-4 py-3 rounded-lg border-2 transition-all ${
                     selected === i ? "border-primary bg-primary/5" : "border-border hover:border-primary/40"
                   }`}
                 >
-                  <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 shrink">
-                    <span className="font-medium text-foreground text-sm sm:text-base whitespace-nowrap">{p.label}</span>
-                    {p.badge && <span className="bg-primary text-primary-foreground text-[9px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 rounded-full whitespace-nowrap">{p.badge}</span>}
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-foreground">{p.label}</span>
+                    {p.badge && <span className="bg-primary text-primary-foreground text-[10px] font-bold px-2 py-0.5 rounded-full">{p.badge}</span>}
                   </div>
-                  <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                    <span className="text-xs sm:text-sm text-muted-foreground line-through">R$ {p.oldPrice}</span>
-                    <span className="font-bold text-primary text-base sm:text-lg">R$ {p.price}</span>
+                  <div className="text-right flex items-center gap-2">
+                    <span className="text-sm text-muted-foreground line-through">R$ {p.oldPrice}</span>
+                    <span className="font-bold text-primary text-lg">R$ {p.price}</span>
                   </div>
                 </button>
               ))}
@@ -329,7 +312,7 @@ const Index = () => {
         <h2 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-8">Perguntas Frequentes</h2>
         <Accordion type="single" collapsible className="space-y-2">
           {faqs.map((f, i) => (
-            <AccordionItem key={i} value={`faq-${i}`} className="border border-border rounded-lg px-4">
+            <AccordionItem key={i} value={⁠ faq-${i} ⁠} className="border border-border rounded-lg px-4">
               <AccordionTrigger className="text-sm font-medium text-foreground hover:no-underline">{f.q}</AccordionTrigger>
               <AccordionContent className="text-sm text-muted-foreground">{f.a}</AccordionContent>
             </AccordionItem>
@@ -358,30 +341,6 @@ const Index = () => {
           <CardContent className="py-10 px-8 text-center space-y-6">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground">Garanta o Seu Terço Agora</h2>
             <p className="text-sm text-muted-foreground">Escolha a melhor oferta e comece sua jornada de contemplação.</p>
-            
-            {/* Model Selector */}
-            <div className="max-w-md mx-auto space-y-2">
-              <p className="text-sm font-bold text-foreground text-left">Modelo:</p>
-              <div className="flex flex-col gap-2">
-                {models.map((model, i) => (
-                  <button
-                    key={model.id}
-                    onClick={() => handleModelChange(i)}
-                    className={`flex items-center gap-2 px-3 py-2 rounded-lg border-2 transition-all text-xs sm:text-sm ${
-                      selectedModel === i
-                        ? "border-primary bg-primary/5 text-foreground font-bold"
-                        : "border-border hover:border-primary/40 text-muted-foreground"
-                    }`}
-                  >
-                    <div className="w-7 h-7 rounded-full overflow-hidden border border-border shrink-0">
-                      <img src={model.images[0]} alt={model.label} className="w-full h-full object-cover" />
-                    </div>
-                    <span className="whitespace-nowrap">{model.label}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
             <div className="max-w-md mx-auto space-y-2">
               {prices.map((p, i) => (
                 <button
